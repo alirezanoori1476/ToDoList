@@ -360,3 +360,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/test/Domain/ToDoList.Domain.Tests.Unit/ToDoList.Domain.Tests.Unit.v3.ncrunchproject
