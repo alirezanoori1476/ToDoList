@@ -1,7 +1,8 @@
 ﻿using Framework.Domain;
-using ToDoList.Domain.Core.Model.Item.Exception;
+using System.Xml.Linq;
+using ToDoList.Domain.Core.Model.Board.Exception;
 
-namespace ToDoList.Domain.Core.Model.Item
+namespace ToDoList.Domain.Core.Model.Board
 {
     public class Item : Entity<long>
     {
@@ -16,8 +17,9 @@ namespace ToDoList.Domain.Core.Model.Item
 
         #region Constructors
 
-        private Item(string title, string description)
+        private Item(long id, string title, string description)
         {
+            Id = id;
             Title = title;
             Description = description;
             _tags = new List<Tag>();
@@ -49,9 +51,9 @@ namespace ToDoList.Domain.Core.Model.Item
 
         #region Factory
 
-        public static Item CreateOne(string name, string description)
+        public static Item CreateOne(long id, string name, string description)
         {
-            return new Item(name, description);
+            return new Item(id, name, description);
         }
 
         #endregion

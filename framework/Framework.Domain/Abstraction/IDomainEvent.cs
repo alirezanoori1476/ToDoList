@@ -1,4 +1,4 @@
-﻿using LoanApplication.Framework.Core.Abstraction;
+﻿using Framework.Core.Abstraction;
 
 namespace Framework.Domain.Abstraction;
 

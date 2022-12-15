@@ -1,6 +1,6 @@
 ﻿using Framework.Domain;
 
-namespace ToDoList.Domain.Core.Model.Item;
+namespace ToDoList.Domain.Core.Model.Board;
 
 public class Tag : Entity<long>
 {

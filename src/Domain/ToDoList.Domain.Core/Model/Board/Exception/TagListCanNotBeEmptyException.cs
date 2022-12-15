@@ -1,6 +1,6 @@
 ﻿using Framework.Core.Exception;
 
-namespace ToDoList.Domain.Core.Model.Item.Exception;
+namespace ToDoList.Domain.Core.Model.Board.Exception;
 
 public class TagListCanNotBeEmptyException : BusinessException
 {

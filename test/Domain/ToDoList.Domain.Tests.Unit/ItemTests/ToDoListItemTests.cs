@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
-using ToDoList.Domain.Core.Model.Item;
-using ToDoList.Domain.Core.Model.Item.Exception;
+using ToDoList.Domain.Core.Model.Board;
+using ToDoList.Domain.Core.Model.Board.Exception;
 using ToDoList.Domain.Tests.Unit.Utility;
 using Xunit;
 
-namespace ToDoList.Domain.Tests.Unit;
+namespace ToDoList.Domain.Tests.Unit.ItemTests;
 
 public class ToDoListItemTests
 {
@@ -13,7 +13,7 @@ public class ToDoListItemTests
 
     public ToDoListItemTests()
     {
-        _item = Item.CreateOne(ItemTestsConstants.ItemTitle, ItemTestsConstants.ItemDescription);
+        _item = Item.CreateOne(ItemTestsConstants.FirstItemId, ItemTestsConstants.ItemTitle, ItemTestsConstants.ItemDescription);
 
         _tags = new List<Tag>
         {
@@ -22,15 +22,15 @@ public class ToDoListItemTests
         };
     }
 
-    [Fact(DisplayName = "یک آیتم به درستی ساخته شود")]
+    [Fact]
     public void Item_created_properly()
     {
+        _item.Id.Should().Be(ItemTestsConstants.FirstItemId);
         _item.Title.Should().Be(ItemTestsConstants.ItemTitle);
         _item.Description.Should().Be(ItemTestsConstants.ItemDescription);
     }
 
-    [Fact(DisplayName = "یک لیستی از تگ ها به آیتم اضافه شود")]
-    [Trait("Category", "Add Tags")]
+    [Fact]
     public void Add_tags_to_an_item()
     {
         _item.AddTags(_tags);
@@ -38,19 +38,17 @@ public class ToDoListItemTests
         _item.Tags.Should().BeEquivalentTo(_tags);
     }
 
-    [Fact(DisplayName = "در زمان اضافه کردن تگ اگر لیست خالی باشد خطا داده می شود")]
-    [Trait("Category", "Add Tags")]
+    [Fact]
     public void AddTags_throw_exception_When_tag_list_is_empty()
     {
-        var tags = new List<Tag>();
+        var emptyTagList = new List<Tag>();
 
-        var action = () => _item.AddTags(tags);
+        var action = () => _item.AddTags(emptyTagList);
 
         action.Should().Throw<TagListCanNotBeEmptyException>();
     }
 
-    [Fact(DisplayName = "یک تگ از لیست تگ ها حذف می شود")]
-    [Trait("Category", "Remove Tags")]
+    [Fact]
     public void Remove_Tag_from_item()
     {
         _item.AddTags(_tags);
@@ -59,8 +57,7 @@ public class ToDoListItemTests
         _item.Tags.Should().NotBeEquivalentTo(_tags);
     }
 
-    [Fact(DisplayName = "در هنگام حذف تگ اگر وجود نداشته باشد، خطا داده می شود")]
-    [Trait("Category", "Remove Tags")]
+    [Fact]
     public void RemoveTag_throw_exception_When_tag_not_exist()
     {
         _item.AddTags(_tags);

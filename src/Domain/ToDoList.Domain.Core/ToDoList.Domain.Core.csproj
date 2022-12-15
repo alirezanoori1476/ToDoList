@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Model\Item\Exception\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\framework\Framework.Core\Framework.Core.csproj" />
     <ProjectReference Include="..\..\..\framework\Framework.Domain\Framework.Domain.csproj" />
   </ItemGroup>

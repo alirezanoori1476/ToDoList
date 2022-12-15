@@ -1,4 +1,4 @@
-﻿namespace LoanApplication.Framework.Core.Abstraction;
+﻿namespace Framework.Core.Abstraction;
 
 public interface IEvent
 {
