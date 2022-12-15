@@ -6,19 +6,19 @@ using Xunit;
 
 namespace ToDoList.Domain.Tests.Unit.boardTests;
 
-public class ToDoListBoardsUnitTests
+public class BoardsUnitTests
 {
     private readonly Board _board;
     private readonly List<Item> _items;
 
-    public ToDoListBoardsUnitTests()
+    public BoardsUnitTests()
     {
         _board = Board.CreateOne(BoardTestsConstants.BoardId, BoardTestsConstants.BoardTitle, BoardTestsConstants.BoardDescription);
         
         _items = new List<Item>
         {
             Item.CreateOne(ItemTestsConstants.FirstItemId,ItemTestsConstants.ItemTitle,ItemTestsConstants.ItemDescription),
-            Item.CreateOne(ItemTestsConstants.SecondTagId,ItemTestsConstants.ItemTitle,ItemTestsConstants.ItemDescription)
+            Item.CreateOne(ItemTestsConstants.SecondItemId,ItemTestsConstants.ItemTitle,ItemTestsConstants.ItemDescription)
         };
     }
 
@@ -30,23 +30,7 @@ public class ToDoListBoardsUnitTests
         _board.Desciption.Should().Be(BoardTestsConstants.BoardDescription);
         _board.IsActive.Should().BeTrue();
     }
-
-    [Fact]
-    public void DeActive_a_board()
-    {
-        _board.DeActiveBoard();
-
-        _board.IsActive.Should().BeFalse();
-    }
-
-    [Fact]
-    public void Active_a_deactivated_board()
-    {
-        _board.DeActiveBoard();
-        _board.ActiveBoard();
-
-        _board.IsActive.Should().BeTrue();
-    }
+   
 
     [Fact]
     public void Add_some_items_to_board()

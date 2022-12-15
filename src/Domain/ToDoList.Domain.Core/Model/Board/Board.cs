@@ -12,7 +12,10 @@ public class Board : Entity<long>
     public bool IsActive { get; private set; }
     public DateTime CreateDate { get; set; }
     public IReadOnlyCollection<Item> Items => _items.AsReadOnly();
+    public IReadOnlyCollection<Tag> Tags => _tags.AsReadOnly();
+
     private List<Item> _items { get; }
+    private List<Tag> _tags { get; }
 
     #endregion
 
@@ -26,24 +29,12 @@ public class Board : Entity<long>
         IsActive = true;
         CreateDate = DateTime.Now;
         _items = new List<Item>();
+        _tags = new List<Tag>();
     }
 
     #endregion
 
     #region Actions
-
-
-
-    #endregion
-
-    #region Factories
-
-    public static Board CreateOne(long id, string title, string description)
-    {
-        return new Board(id, title, description);
-    }
-
-    #endregion
 
     public void DeActiveBoard()
     {
@@ -71,5 +62,31 @@ public class Board : Entity<long>
             throw new ItemNotExistException();
 
         _items.Remove(item);
+    }
+
+    public void AddTag(Tag tag)
+    {
+        _tags.Add(tag);
+    }
+
+    #endregion
+
+    #region Factories
+
+    public static Board CreateOne(long id, string title, string description)
+    {
+        return new Board(id, title, description);
+    }
+
+    #endregion
+
+    public void RemoveTag(int tagId)
+    {
+        var tag = _tags.FirstOrDefault(a=>a.Id == tagId);
+
+        if (tag == null)
+            throw new TagNotExistException();
+
+        _tags.Remove(tag);
     }
 }

@@ -17,8 +17,8 @@ public class ToDoListItemTests
 
         _tags = new List<Tag>
         {
-            Tag.CreateOne(ItemTestsConstants.FirstTagId,ItemTestsConstants.TagTitle),
-            Tag.CreateOne(ItemTestsConstants.SecondTagId,ItemTestsConstants.TagTitle)
+            Tag.CreateOne(TagTestsConstants.FirstTagId,TagTestsConstants.TagTitle),
+            Tag.CreateOne(TagTestsConstants.SecondTagId,TagTestsConstants.TagTitle)
         };
     }
 
@@ -52,7 +52,7 @@ public class ToDoListItemTests
     public void Remove_Tag_from_item()
     {
         _item.AddTags(_tags);
-        _item.RemoveTag(ItemTestsConstants.ExistTagId);
+        _item.RemoveTag(TagTestsConstants.ExistTagId);
 
         _item.Tags.Should().NotBeEquivalentTo(_tags);
     }
@@ -62,7 +62,7 @@ public class ToDoListItemTests
     {
         _item.AddTags(_tags);
 
-        var action = () => _item.RemoveTag(ItemTestsConstants.NotExistedTagId);
+        var action = () => _item.RemoveTag(TagTestsConstants.NotExistedTagId);
 
         action.Should().Throw<TagNotExistException>();
     }
