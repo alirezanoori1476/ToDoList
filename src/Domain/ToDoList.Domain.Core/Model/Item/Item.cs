@@ -1,8 +1,9 @@
-﻿using ToDoList.Domain.Core.Model.Item.Exception;
+﻿using Framework.Domain;
+using ToDoList.Domain.Core.Model.Item.Exception;
 
 namespace ToDoList.Domain.Core.Model.Item
 {
-    public class Item
+    public class Item : Entity<long>
     {
         #region Properties
 

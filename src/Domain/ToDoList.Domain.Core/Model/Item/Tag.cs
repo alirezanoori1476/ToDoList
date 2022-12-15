@@ -1,8 +1,9 @@
-﻿namespace ToDoList.Domain.Core.Model.Item;
+﻿using Framework.Domain;
 
-public class Tag
+namespace ToDoList.Domain.Core.Model.Item;
+
+public class Tag : Entity<long>
 {
-    public long Id { get; private set; }
     public string Title { get; private set; }
 
     private Tag(long id, string title)

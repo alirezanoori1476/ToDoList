@@ -1,6 +1,8 @@
-﻿namespace ToDoList.Domain.Core.Model.Item.Exception;
+﻿using Framework.Core.Exception;
 
-public class TagNotExistException : System.Exception
+namespace ToDoList.Domain.Core.Model.Item.Exception;
+
+public class TagNotExistException : BusinessException
 {
     public TagNotExistException() : base("Tag Not Exits")
     {

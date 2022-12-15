@@ -1,6 +1,8 @@
-﻿namespace ToDoList.Domain.Core.Model.Item.Exception;
+﻿using Framework.Core.Exception;
 
-public class TagListCanNotBeEmptyException : System.Exception
+namespace ToDoList.Domain.Core.Model.Item.Exception;
+
+public class TagListCanNotBeEmptyException : BusinessException
 {
     public TagListCanNotBeEmptyException() : base("Tag List Can Not Be Empty")
     {
